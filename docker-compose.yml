@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: bibliotheque
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3308:3306"
+    networks:
+      - bibliotheque_network
+
+  app:
+    build: .
+    container_name: bibliotheque_app
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/bibliotheque
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8080:8080"
+    networks:
+      - bibliotheque_network
+
+networks:
+  bibliotheque_network:
+    driver: bridge

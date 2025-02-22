@@ -77,7 +77,7 @@ docker-compose up -d
 ## 🔗 Liens utiles
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [Docker](https://www.docker.com/)
-- [Swagger](https://swagger.io/)
+- [Swagger](http://localhost:8080/swagger-ui/index.html)
 
 ---
 ✍️ **Auteur** : Nasser - 📅 2025
